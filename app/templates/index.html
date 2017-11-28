@@ -1,0 +1,33 @@
+{% extends "bootstrap/base.html" %}
+<html>
+    <head>
+      {% block title %} Chat {% endblock %}
+    </head>
+    {% block navbar %}
+      <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/"> Home </a>
+          </div>
+          <div class="navbar collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/"> Home </a> </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+    <body>
+        {% block content %}
+        <div class="container">
+          <h1>Chat - SocketIO</h1>
+          <form method="POST">
+              {{ form.hidden_tag() }}
+              {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
+              {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
+              <button onclick="form.submit()" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        {% endblock %}
+    </body>
+</html>
